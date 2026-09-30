@@ -81,32 +81,80 @@
     </button>
   </header>
 
+  <!-- ÜST MENÜ: ÖZEL ADMİN -->
+  <div class="quick-menu" id="quickMenu" aria-hidden="true">
+<button class="quick-menu-item admin-menu-item" id="openAdmin" type="button">
+      <span class="quick-menu-lock">🔒</span>
+      <span>Özel Admin Alanı</span>
+      <b>↗</b>
+    </button>
+  </div>
+  <div class="feature-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle" aria-hidden="true">
+    <div class="feature-modal-card admin-card">
+      <button class="feature-modal-close" data-close-modal="adminModal" type="button" aria-label="Admin penceresini kapat">×</button>
+      <div class="feature-modal-icon">🔐</div>
+      <div class="feature-modal-eyebrow">YILDIRIM AJANS</div>
+      <h2 id="adminTitle">ÖZEL ADMİN ALANI</h2>
+      <p class="admin-subtitle">Bu alan yalnızca yetkili giriş içindir.</p>
+
+      <form class="admin-login" id="adminLoginForm">
+        <label for="adminPassword">ADMİN ŞİFRESİ</label>
+        <div class="password-wrap">
+          <input id="adminPassword" name="password" type="password" autocomplete="off" placeholder="Şifrenizi girin" required>
+          <button type="button" id="togglePassword" aria-label="Şifreyi göster">◉</button>
+        </div>
+        <button class="admin-submit" type="submit">GİRİŞ YAP <b>↗</b></button>
+        <p class="admin-error" id="adminError" role="alert" aria-live="polite"></p>
+      </form>
+
+      <div class="admin-success" id="adminSuccess" hidden>
+        <div class="admin-hearts" aria-hidden="true">
+          <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+        </div>
+        <div class="admin-success-icon">✓</div>
+        <strong>GİRİŞ BAŞARILI</strong>
+        <p class="miran-message">BU SİTE CANIM YİĞENİM MİRAN İÇİN YAPILMIŞTIR<br>
+        HERHANGİ BİR HUSUSTA VEYA SİTENİN KURULUM AMACININ DEĞİŞMESİ DURUMUNDA<br>
+        BU ÖZEL ADMİN ALANI ASLA KALDIRILMAMAK ÜZERE SABİTLENMİŞTİR..</p>
+        <span>Özel admin alanına erişim açıldı.</span>
+        <button class="legal-modal-btn" data-close-modal="adminModal" type="button">DEVAM ET <b>↗</b></button>
+      </div>
+    </div>
+  </div>
+
   <main class="site-track" id="siteTrack">
 
     <!-- 01 / HERO -->
     <section class="panel hero-panel" id="home">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span></span> WEB TASARIM & DİJİTAL ÇÖZÜMLER</div>
-
-        <h1>
-          Dijitalde
-          <em>iz bırak.</em>
-        </h1>
-
-        <p>
-          Markanız için güçlü web deneyimleri, özgün tasarımlar
-          ve akılda kalan dijital kimlikler oluşturuyorum.
-        </p>
-
-        <div class="hero-sign">
-          <strong>Mert Yıldırım</strong>
-          <span>FİKİRDEN DENEYİME</span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#contact" class="primary-btn">Projenizi Konuşalım <b>↗</b></a>
-          <a href="#services" class="text-btn">Hizmetleri Gör <span>→</span></a>
-        </div>
+      <!-- HERO MESAJI YERİNE: SAYDAM / DALGALANAN TÜRK BAYRAĞI -->
+      <div class="hero-flag-wrap reveal" aria-label="Türk Bayrağı">
+        <svg class="hero-flag" viewBox="0 0 900 600" role="img" aria-hidden="true">
+          <defs>
+            <filter id="flagWave" x="-8%" y="-12%" width="116%" height="124%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="2" seed="7" result="noise">
+                <animate attributeName="baseFrequency" values="0.012 0.045;0.018 0.055;0.012 0.045" dur="6s" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <linearGradient id="flagSheen" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#000" stop-opacity=".18"/>
+              <stop offset=".18" stop-color="#fff" stop-opacity=".07"/>
+              <stop offset=".36" stop-color="#000" stop-opacity=".16"/>
+              <stop offset=".56" stop-color="#fff" stop-opacity=".055"/>
+              <stop offset=".76" stop-color="#000" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#fff" stop-opacity=".04"/>
+            </linearGradient>
+          </defs>
+          <g filter="url(#flagWave)">
+            <rect x="20" y="45" width="860" height="510" rx="3" fill="#d71920"/>
+            <circle cx="355" cy="300" r="142" fill="#fff"/>
+            <circle cx="405" cy="300" r="116" fill="#d71920"/>
+            <polygon fill="#fff" points="492,300 518,309 535,333 535,303 558,288 530,280 520,253 505,277 476,273 492,296"/>
+            <rect x="20" y="45" width="860" height="510" fill="url(#flagSheen)"/>
+          </g>
+        </svg>
+        <div class="hero-flag-glow"></div>
+        <span class="hero-flag-caption">TÜRKİYE • YILDIRIM AJANS</span>
       </div>
 
       <!-- MEVCUT ŞİMŞEKLİ ÇEKİRDEK KORUNDU -->
@@ -308,7 +356,7 @@
   </main>
 
   <footer class="footer">
-    <span>© 2022 YILDIRIM AJANS</span>
+    <span>© 2026 YILDIRIM AJANS</span>
     <span>FİKRİ TASARIMA · TASARIMI DENEYİME</span>
     <a href="#home">↑ BAŞA DÖN</a>
   </footer>
