@@ -292,3 +292,36 @@ setTimeout(() => {
     setTimeout(() => item.classList.add("visible"), index * 140);
   });
 }, 700);
+
+
+/* ================= PRIVACY / COPYRIGHT MODAL ================= */
+const legalModal = document.getElementById("legalModal");
+const legalContinue = document.getElementById("legalContinue");
+
+function showLegalModal() {
+  if (!legalModal) return;
+  legalModal.classList.add("is-visible");
+  document.body.classList.add("legal-open");
+  setTimeout(() => legalContinue?.focus(), 250);
+}
+
+function closeLegalModal() {
+  if (!legalModal) return;
+  legalModal.classList.remove("is-visible");
+  document.body.classList.remove("legal-open");
+}
+
+legalContinue?.addEventListener("click", closeLegalModal);
+
+legalModal?.addEventListener("click", event => {
+  if (event.target === legalModal) closeLegalModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && legalModal?.classList.contains("is-visible")) {
+    closeLegalModal();
+  }
+});
+
+/* Loader tamamlandıktan sonra uyarıyı göster */
+setTimeout(showLegalModal, 1900);
