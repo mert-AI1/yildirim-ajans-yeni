@@ -325,3 +325,134 @@ document.addEventListener("keydown", event => {
 
 /* Loader tamamlandıktan sonra uyarıyı göster */
 setTimeout(showLegalModal, 1900);
+
+
+/* ================= QUICK MENU / KVKK / ADMIN ================= */
+const quickMenu = document.getElementById("quickMenu");
+const menuButton = document.querySelector(".menu-btn");
+const openKvkk = document.getElementById("openKvkk");
+const openAdmin = document.getElementById("openAdmin");
+const kvkkModal = document.getElementById("kvkkModal");
+const adminModal = document.getElementById("adminModal");
+
+function setModal(modal, visible) {
+  if (!modal) return;
+  modal.classList.toggle("is-visible", visible);
+  modal.setAttribute("aria-hidden", String(!visible));
+  if (visible) document.body.style.overflow = "hidden";
+  else if (!document.querySelector(".feature-modal.is-visible")) document.body.style.overflow = window.innerWidth <= 900 ? "auto" : "hidden";
+}
+
+function closeQuickMenu() {
+  if (!quickMenu) return;
+  quickMenu.classList.remove("is-open");
+  quickMenu.setAttribute("aria-hidden", "true");
+}
+
+if (menuButton && quickMenu) {
+  menuButton.addEventListener("click", event => {
+    event.stopPropagation();
+    const isOpen = quickMenu.classList.toggle("is-open");
+    quickMenu.setAttribute("aria-hidden", String(!isOpen));
+  });
+}
+
+if (openKvkk) {
+  openKvkk.addEventListener("click", () => {
+    closeQuickMenu();
+    setModal(kvkkModal, true);
+  });
+}
+
+if (openAdmin) {
+  openAdmin.addEventListener("click", () => {
+    closeQuickMenu();
+    setModal(adminModal, true);
+    const input = document.getElementById("adminPassword");
+    const error = document.getElementById("adminError");
+    const form = document.getElementById("adminLoginForm");
+    const success = document.getElementById("adminSuccess");
+    if (input) input.value = "";
+    if (error) error.textContent = "";
+    if (form) form.hidden = false;
+    if (success) success.hidden = true;
+    setTimeout(() => input?.focus(), 180);
+  });
+}
+
+document.querySelectorAll("[data-close-modal]").forEach(button => {
+  button.addEventListener("click", () => {
+    const modal = document.getElementById(button.getAttribute("data-close-modal"));
+    setModal(modal, false);
+  });
+});
+
+[kvkkModal, adminModal].forEach(modal => {
+  if (!modal) return;
+  modal.addEventListener("click", event => {
+    if (event.target === modal) setModal(modal, false);
+  });
+});
+
+document.addEventListener("click", event => {
+  if (quickMenu && quickMenu.classList.contains("is-open") && !quickMenu.contains(event.target) && !menuButton?.contains(event.target)) {
+    closeQuickMenu();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
+  closeQuickMenu();
+  if (kvkkModal?.classList.contains("is-visible")) setModal(kvkkModal, false);
+  if (adminModal?.classList.contains("is-visible")) setModal(adminModal, false);
+});
+
+const togglePassword = document.getElementById("togglePassword");
+const adminPassword = document.getElementById("adminPassword");
+if (togglePassword && adminPassword) {
+  togglePassword.addEventListener("click", () => {
+    const visible = adminPassword.type === "text";
+    adminPassword.type = visible ? "password" : "text";
+    togglePassword.textContent = visible ? "◉" : "◌";
+    togglePassword.setAttribute("aria-label", visible ? "Şifreyi göster" : "Şifreyi gizle");
+  });
+}
+
+/* Geçici istemci tarafı kilit — yalnızca şimdilik görsel/işlevsel engel olarak kullanılır. */
+const ADMIN_PASSWORD_HASH = "de0181311adb6616be36613d6be7aa79e27afedbeeaf593bd00f80f32754fcf5";
+
+async function sha256(value) {
+  const data = new TextEncoder().encode(value);
+  const hash = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hash)).map(byte => byte.toString(16).padStart(2, "0")).join("");
+}
+
+const adminLoginForm = document.getElementById("adminLoginForm");
+if (adminLoginForm) {
+  adminLoginForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const password = adminPassword?.value || "";
+    const error = document.getElementById("adminError");
+    const success = document.getElementById("adminSuccess");
+
+    if (!password) {
+      if (error) error.textContent = "Lütfen şifrenizi girin.";
+      return;
+    }
+
+    const hash = await sha256(password);
+
+    if (hash === ADMIN_PASSWORD_HASH) {
+      if (error) error.textContent = "";
+      adminLoginForm.hidden = true;
+      if (success) success.hidden = false;
+    } else {
+      if (error) error.textContent = "Şifre hatalı. Bu alan yalnızca yetkili giriş içindir.";
+      if (adminPassword) {
+        adminPassword.value = "";
+        adminPassword.focus();
+      }
+    }
+  });
+}
