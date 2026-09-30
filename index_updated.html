@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Yıldırım Ajans - Mert Yıldırım. Web tasarım, marka kimliği ve dijital projeler.">
+  <title>Yıldırım Ajans | Mert Yıldırım</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LOADING: KORUNDU -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-bolt"><span>⚡</span></div>
+      <h1>YILDIRIM AJANS</h1>
+      <div class="loading-text">
+        <span>LOADING</span>
+        <span class="dots">...</span>
+      </div>
+      <div class="loading-line">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KAR: KORUNDU -->
+  <div class="snow" aria-hidden="true"></div>
+  <div class="ambient-light" aria-hidden="true"></div>
+
+  <!-- GİZLİLİK & TELİF UYARISI -->
+  <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <div class="legal-modal-card">
+      <div class="legal-modal-icon">🔒</div>
+      <div class="legal-modal-eyebrow">YILDIRIM AJANS</div>
+      <h2 id="legalTitle">GİZLİLİK &amp; TELİF UYARISI</h2>
+      <p>
+        Bu sitede bulunan tüm içerik ve çalışmalar Yıldırım Ajans tarafından korunmaktadır.
+      </p>
+      <p>
+        İzinsiz kullanım, kopyalama veya çoğaltma hukuki sorumluluk doğurabilir.
+      </p>
+      <div class="legal-modal-footer">
+        <span>© 2022 Yıldırım Ajans. Tüm hakları saklıdır.</span>
+        <button class="legal-modal-btn" id="legalContinue" type="button">
+          ANLADIM — DEVAM ET <b>↗</b>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <header class="navbar">
+    <a href="#home" class="brand">
+      <span class="brand-mark">MY</span>
+      <span class="brand-text">
+        <strong>YILDIRIM AJANS</strong>
+        <small>MERT YILDIRIM</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#home">Ana Sayfa</a>
+      <a href="#services">Hizmetler</a>
+      <a href="#work">Projeler</a>
+      <a href="#about">Hakkımda</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+
+    <div class="nav-meta">01 — 05</div>
+
+    <button class="menu-btn" aria-label="Menüyü aç">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ÜST MENÜ: KVKK + ÖZEL ADMİN -->
+  <div class="quick-menu" id="quickMenu" aria-hidden="true">
+    <button class="quick-menu-item" id="openKvkk" type="button">
+      <span class="quick-menu-icon">KVKK</span>
+      <span>KVKK Aydınlatma Metni</span>
+      <b>↗</b>
+    </button>
+    <button class="quick-menu-item admin-menu-item" id="openAdmin" type="button">
+      <span class="quick-menu-lock">🔒</span>
+      <span>Özel Admin Alanı</span>
+      <b>↗</b>
+    </button>
+  </div>
+
+  <!-- KVKK MODALI -->
+  <div class="feature-modal" id="kvkkModal" role="dialog" aria-modal="true" aria-labelledby="kvkkTitle" aria-hidden="true">
+    <div class="feature-modal-card kvkk-card">
+      <button class="feature-modal-close" data-close-modal="kvkkModal" type="button" aria-label="KVKK penceresini kapat">×</button>
+      <div class="feature-modal-icon">🔒</div>
+      <div class="feature-modal-eyebrow">YILDIRIM AJANS</div>
+      <h2 id="kvkkTitle">KVKK AYDINLATMA METNİ</h2>
+
+      <div class="kvkk-content">
+        <p><strong>Yıldırım Ajans</strong> olarak kişisel verilerinizin gizliliğine ve güvenliğine önem veriyoruz.</p>
+        <p>6698 sayılı <strong>Kişisel Verilerin Korunması Kanunu (KVKK)</strong> kapsamında, internet sitemizi ziyaret etmeniz veya bizimle telefon, e-posta, WhatsApp ya da diğer iletişim kanalları üzerinden iletişime geçmeniz sırasında tarafımıza ilettiğiniz kişisel verilerinizin korunması için gerekli özeni göstermekteyiz.</p>
+
+        <h3>İşlenen Kişisel Veriler</h3>
+        <p>İletişim faaliyetleri kapsamında tarafımıza ad ve soyad, telefon numarası, e-posta adresi, talep ve mesaj içerikleri ile hizmet talebinizle ilgili diğer bilgiler iletilebilir.</p>
+
+        <h3>Kişisel Verilerinizin İşlenme Amaçları</h3>
+        <p>Toplanan kişisel verileriniz; taleplerinize cevap vermek, sizinle iletişim kurmak, hizmet ve proje süreçlerini yürütmek, teklif ve görüşme süreçlerini gerçekleştirmek, yasal yükümlülükleri yerine getirmek ve iletişim süreçlerini geliştirmek amaçlarıyla, ilgili mevzuata uygun şekilde işlenebilir.</p>
+
+        <h3>Kişisel Verilerinizin Güvenliği</h3>
+        <p>Yıldırım Ajans, kişisel verilerin yetkisiz erişime, hukuka aykırı kullanıma, kayba veya kötüye kullanıma karşı korunması için makul teknik ve idari tedbirleri almaya özen gösterir. Kişisel verileriniz, gerekli olmadığı sürece üçüncü kişilerle paylaşılmaz. Yasal zorunluluklar ve hizmetin yürütülmesi için gerekli durumlar saklıdır.</p>
+
+        <h3>KVKK Kapsamındaki Haklarınız</h3>
+        <p>6698 sayılı KVKK'nın 11. maddesi kapsamında kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme ve kanuni şartlar oluştuğunda verilerin silinmesini veya yok edilmesini isteme gibi yasal haklara sahipsiniz.</p>
+
+        <p>KVKK kapsamındaki talepleriniz ve sorularınız için bizimle iletişime geçebilirsiniz.</p>
+
+        <div class="kvkk-contact">
+          <span>📧 yildirimajans2@gmail.com</span>
+          <span>📞 +90 530 632 95 16</span>
+          <span>💬 WhatsApp: +90 507 816 27 02</span>
+        </div>
+      </div>
+
+      <div class="feature-modal-footer">
+        <span>Son Güncelleme: 20.10.2023</span>
+        <button class="legal-modal-btn" data-close-modal="kvkkModal" type="button">KAPAT <b>×</b></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMİN ŞİFRE MODALI -->
+  <div class="feature-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle" aria-hidden="true">
+    <div class="feature-modal-card admin-card">
+      <button class="feature-modal-close" data-close-modal="adminModal" type="button" aria-label="Admin penceresini kapat">×</button>
+      <div class="feature-modal-icon">🔐</div>
+      <div class="feature-modal-eyebrow">YILDIRIM AJANS</div>
+      <h2 id="adminTitle">ÖZEL ADMİN ALANI</h2>
+      <p class="admin-subtitle">Bu alan yalnızca yetkili giriş içindir.</p>
+
+      <form class="admin-login" id="adminLoginForm">
+        <label for="adminPassword">ADMİN ŞİFRESİ</label>
+        <div class="password-wrap">
+          <input id="adminPassword" name="password" type="password" autocomplete="off" placeholder="Şifrenizi girin" required>
+          <button type="button" id="togglePassword" aria-label="Şifreyi göster">◉</button>
+        </div>
+        <button class="admin-submit" type="submit">GİRİŞ YAP <b>↗</b></button>
+        <p class="admin-error" id="adminError" role="alert" aria-live="polite"></p>
+      </form>
+
+      <div class="admin-success" id="adminSuccess" hidden>
+        <div class="admin-hearts" aria-hidden="true">
+          <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+        </div>
+        <div class="admin-success-icon">✓</div>
+        <strong>GİRİŞ BAŞARILI</strong>
+        <p class="miran-message">
+          Bu özel alan, <strong>Yıldırım Ajans’ın sahibi ve kurucusu Mert Yıldırım</strong>
+          tarafından, değerli yeğeni <strong>Muhammed Miran Türkoğlu</strong> için özel olarak hazırlanmıştır.
+          <br><br>
+          Sitenin gelecekteki güncellemeleri, değişiklikleri veya olası teknik sorunları ne olursa olsun,
+          bu bölümün <strong>Muhammed Miran Türkoğlu’na ithaf edilmiş özel bir alan</strong> olarak korunması amaçlanmıştır.
+          <br><br>
+          Bu mesaj, isteyerek veya istem dışı gerçekleşebilecek site değişikliklerinde dahi
+          mümkün olduğunca korunacak şekilde sabitlenmiştir.
+          <br><br>
+          <em>Hebun Yıldırım • Helin Yıldırım • Mert Yıldırım</em>
+          <br>
+          <strong>Bu üçlü çok güçlü. :)</strong>
+        </p>
+        <span>Özel admin alanına erişim açıldı.</span>
+        <button class="legal-modal-btn" data-close-modal="adminModal" type="button">DEVAM ET <b>↗</b></button>
+      </div>
+    </div>
+  </div>
+
+  <main class="site-track" id="siteTrack">
+
+    <!-- 01 / HERO -->
+    <section class="panel hero-panel" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> WEB TASARIM & DİJİTAL ÇÖZÜMLER</div>
+
+        <h1>
+          Dijitalde
+          <em>iz bırak.</em>
+        </h1>
+
+        <p>
+          Markanız için güçlü web deneyimleri, özgün tasarımlar
+          ve akılda kalan dijital kimlikler oluşturuyorum.
+        </p>
+
+        <div class="hero-sign">
+          <strong>Mert Yıldırım</strong>
+          <span>FİKİRDEN DENEYİME</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#contact" class="primary-btn">Projenizi Konuşalım <b>↗</b></a>
+          <a href="#services" class="text-btn">Hizmetleri Gör <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- MEVCUT ŞİMŞEKLİ ÇEKİRDEK KORUNDU -->
+      <div class="core-stage reveal">
+        <div class="core-glow"></div>
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="orbit orbit-c"></div>
+
+        <div class="electric-core">
+          <div class="core-inner"></div>
+          <div class="big-bolt">⚡</div>
+          <div class="core-brand">YILDIRIM<small>AJANS</small></div>
+        </div>
+
+        <div class="orbit-dot dot-a"></div>
+        <div class="orbit-dot dot-b"></div>
+        <div class="orbit-dot dot-c"></div>
+
+        <div class="floating-label label-one">
+          <span>01</span>
+          <strong>DIGITAL</strong>
+          <small>CREATIVE STUDIO</small>
+        </div>
+
+        <div class="floating-label label-two">
+          <span>✦</span>
+          <strong>CREATIVE</strong>
+          <small>YILDIRIM DOKUNUŞU</small>
+        </div>
+      </div>
+
+      <div class="panel-number">01 <span>/</span> 05</div>
+      <div class="side-hint">YATAY KAYDIR <b>→</b></div>
+    </section>
+
+    <!-- 02 / SERVICES -->
+    <section class="panel services-panel" id="services">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow"><span></span> NELER YAPIYORUM?</div>
+          <h2>Fikri <em>güçlendir.</em></h2>
+        </div>
+        <p>Dijital dünyada markanızı ileri taşıyan yaratıcı çözümler.</p>
+      </div>
+
+      <div class="service-stage">
+        <article class="service-tile reveal">
+          <span class="tile-no">01</span>
+          <div class="tile-icon">◈</div>
+          <h3>Web Tasarım</h3>
+          <p>Modern, hızlı, mobil uyumlu ve markanıza özel web deneyimleri.</p>
+          <b class="tile-arrow">↗</b>
+        </article>
+
+        <article class="service-tile reveal">
+          <span class="tile-no">02</span>
+          <div class="tile-icon">◇</div>
+          <h3>Marka & Logo</h3>
+          <p>Markanızın karakterini taşıyan özgün logo ve görsel kimlik.</p>
+          <b class="tile-arrow">↗</b>
+        </article>
+
+        <article class="service-tile reveal">
+          <span class="tile-no">03</span>
+          <div class="tile-icon">✦</div>
+          <h3>Dijital Tasarım</h3>
+          <p>Sosyal medya, reklam ve dijital platformlar için yaratıcı işler.</p>
+          <b class="tile-arrow">↗</b>
+        </article>
+
+        <article class="service-tile reveal">
+          <span class="tile-no">04</span>
+          <div class="tile-icon">⚡</div>
+          <h3>Özel Projeler</h3>
+          <p>Fikrinizi güçlü bir dijital ürüne dönüştüren özel çözümler.</p>
+          <b class="tile-arrow">↗</b>
+        </article>
+      </div>
+
+      <div class="panel-number">02 <span>/</span> 05</div>
+    </section>
+
+    <!-- 03 / DEVICES -->
+    <section class="panel devices-panel" id="work">
+      <div class="devices-copy reveal">
+        <div class="eyebrow"><span></span> DİJİTAL DENEYİM</div>
+        <h2>Her ekranda<br><em>Yıldırım.</em></h2>
+        <p>
+          Tasarladığım deneyimler telefon, tablet ve bilgisayarda
+          aynı güçlü karakteri korur.
+        </p>
+
+        <div class="device-stats">
+          <div><strong>01</strong><span>MOBİL</span></div>
+          <div><strong>02</strong><span>TABLET</span></div>
+          <div><strong>03</strong><span>DESKTOP</span></div>
+        </div>
+      </div>
+
+      <div class="devices-scene reveal">
+        <div class="device-glow"></div>
+
+        <div class="laptop device">
+          <div class="screen">
+            <div class="mini-nav"><b>⚡ YILDIRIM</b><span>ANA SAYFA　 HİZMETLER　 İLETİŞİM</span></div>
+            <div class="mini-hero">
+              <small>DİJİTALDE</small>
+              <strong>İZ BIRAK.</strong>
+              <i>YILDIRIM AJANS</i>
+              <button>PROJENİ KONUŞALIM →</button>
+            </div>
+            <div class="mini-orb">⚡</div>
+          </div>
+          <div class="base"></div>
+        </div>
+
+        <div class="tablet device">
+          <div class="screen">
+            <div class="mini-nav"><b>YILDIRIM</b><span>☰</span></div>
+            <div class="mini-title">Markanı<br><em>Dijitalde</em><br>büyüt.</div>
+            <div class="mini-card-row"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="phone device">
+          <div class="phone-screen">
+            <div class="phone-top">YILDIRIM AJANS</div>
+            <div class="phone-bolt">⚡</div>
+            <strong>DİJİTALDE<br>İZ BIRAK.</strong>
+            <small>Web • Marka • Dijital</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-number">03 <span>/</span> 05</div>
+    </section>
+
+    <!-- 04 / ABOUT -->
+    <section class="panel about-panel" id="about">
+      <div class="about-mark reveal">
+        <span>MY</span>
+        <div class="about-ring"></div>
+        <div class="about-bolt">⚡</div>
+        <small>MERT YILDIRIM</small>
+      </div>
+
+      <div class="about-copy reveal">
+        <div class="eyebrow"><span></span> HAKKIMDA</div>
+        <h2>Marka değil,<br><em>etki</em> tasarlıyorum.</h2>
+
+        <p>
+          Ben Mert Yıldırım. Yıldırım Ajans’ın arkasındaki fikirlerin
+          ve dijital deneyimlerin mimarıyım.
+        </p>
+
+        <p>
+          Tasarım benim için yalnızca güzel görünmek değil;
+          bir markanın karakterini insanlara hissettirmek.
+        </p>
+
+        <div class="about-list">
+          <span>✓ Modern ve özgün tasarım</span>
+          <span>✓ Hızlı teslimat</span>
+          <span>✓ Mobil uyumlu yapılar</span>
+          <span>✓ 7/24 iletişim</span>
+        </div>
+
+        <div class="signature">Mert Yıldırım</div>
+      </div>
+
+      <div class="panel-number">04 <span>/</span> 05</div>
+    </section>
+
+    <!-- 05 / CONTACT -->
+    <section class="panel contact-panel" id="contact">
+      <div class="contact-copy reveal">
+        <div class="eyebrow"><span></span> YENİ BİR PROJE</div>
+        <h2>Konuşalım,<br><em>üretelim.</em></h2>
+        <p>Fikrinizi anlatın. Birlikte onu iz bırakan bir deneyime dönüştürelim.</p>
+
+        <div class="contact-links">
+          <a href="tel:+905306329516"><small>TELEFON</small><strong>+90 530 632 95 16</strong></a>
+          <a href="https://wa.me/905078162702" target="_blank" rel="noopener"><small>WHATSAPP</small><strong>+90 507 816 27 02</strong></a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yildirimajans2@gmail.com" target="_blank" rel="noopener"><small>E-POSTA</small><strong>yildirimajans2@gmail.com</strong></a>
+        </div>
+      </div>
+
+      <div class="contact-visual reveal">
+        <div class="contact-orbit"></div>
+        <div class="contact-bolt">⚡</div>
+        <span>YILDIRIM AJANS</span>
+        <a class="primary-btn" href="https://wa.me/905078162702" target="_blank" rel="noopener">WhatsApp'tan Yaz <b>↗</b></a>
+      </div>
+
+      <div class="panel-number">05 <span>/</span> 05</div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 YILDIRIM AJANS</span>
+    <span>FİKRİ TASARIMA · TASARIMI DENEYİME</span>
+    <a href="#home">↑ BAŞA DÖN</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
